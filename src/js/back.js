@@ -466,7 +466,6 @@ class gameStart extends Phaser.Scene {
         this.load.spritesheet('Npc01Walk', npcWalk, {
             frameWidth: 128, frameHeight: 128
         });
-        this.add.image(0, 0, "stand", 0)
         this.load.on('complete', function () {
             this.anims.create({
                 key: 'stand_anim',
