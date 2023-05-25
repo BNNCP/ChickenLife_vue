@@ -55,7 +55,7 @@ btnCamera.addEventListener('click', muteCam);
 btnMic.addEventListener('click', muteMic);
 btnLeave.addEventListener('click', leaveRoom);
 var P_PubMap = "";
-fetch('https://chickenlive.netlify.app/api/Ads')
+fetch('https://chickenlife.azurewebsites.net/api/Ads')
     .then(response => response.json())
     .then(data => {
         var ads = data;
