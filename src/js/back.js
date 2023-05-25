@@ -461,12 +461,27 @@ class gameStart extends Phaser.Scene {
             this.load.spritesheet('stand', spriteStand, {
                 frameWidth: 128, frameHeight: 128
             });
+
+        },
+            this)
+        this.textures.once('addtexture', () => {
+
             this.load.spritesheet('walk', spriteWalk, {
                 frameWidth: 128, frameHeight: 128
             });
+
+        },
+            this)
+        this.textures.once('addtexture', () => {
+
             this.load.spritesheet('Npc01Stand', npcStand, {
                 frameWidth: 128, frameHeight: 128
             });
+
+        },
+            this)
+        this.textures.once('addtexture', () => {
+
             this.load.spritesheet('Npc01Walk', npcWalk, {
                 frameWidth: 128, frameHeight: 128
             });
