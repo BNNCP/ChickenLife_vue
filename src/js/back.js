@@ -464,7 +464,7 @@ class gameStart extends Phaser.Scene {
 
         },
             this)
-        this.textures.once('addtexture', () => {
+        this.textures.once('addtexture2', () => {
 
             this.load.spritesheet('walk', spriteWalk, {
                 frameWidth: 128, frameHeight: 128
@@ -472,7 +472,7 @@ class gameStart extends Phaser.Scene {
 
         },
             this)
-        this.textures.once('addtexture', () => {
+        this.textures.once('addtexture3', () => {
 
             this.load.spritesheet('Npc01Stand', npcStand, {
                 frameWidth: 128, frameHeight: 128
@@ -480,7 +480,7 @@ class gameStart extends Phaser.Scene {
 
         },
             this)
-        this.textures.once('addtexture', () => {
+        this.textures.once('addtexture4', () => {
 
             this.load.spritesheet('Npc01Walk', npcWalk, {
                 frameWidth: 128, frameHeight: 128
