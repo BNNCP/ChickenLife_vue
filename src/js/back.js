@@ -461,18 +461,30 @@ class gameStart extends Phaser.Scene {
             this.load.spritesheet('stand', spriteStand, {
                 frameWidth: 128, frameHeight: 128
             });
+            this.load.spritesheet('walk', spriteWalk, {
+                frameWidth: 128, frameHeight: 128
+            });
+            this.load.spritesheet('Npc01Stand', npcStand, {
+                frameWidth: 128, frameHeight: 128
+            });
+            this.load.spritesheet('Npc01Walk', npcWalk, {
+                frameWidth: 128, frameHeight: 128
+            });
         },
             this)
-        this.load.spritesheet('walk', spriteWalk, {
-            frameWidth: 128, frameHeight: 128
-        });
-        this.load.spritesheet('Npc01Stand', npcStand, {
-            frameWidth: 128, frameHeight: 128
-        });
-        this.load.spritesheet('Npc01Walk', npcWalk, {
-            frameWidth: 128, frameHeight: 128
-        });
+        // this.load.spritesheet('walk', spriteWalk, {
+        //     frameWidth: 128, frameHeight: 128
+        // });
+        // this.load.spritesheet('Npc01Stand', npcStand, {
+        //     frameWidth: 128, frameHeight: 128
+        // });
+        // this.load.spritesheet('Npc01Walk', npcWalk, {
+        //     frameWidth: 128, frameHeight: 128
+        // });
         this.textures.addBase64('stand', spriteStand);
+        this.textures.addBase64('walk', spriteWalk);
+        this.textures.addBase64('Npc01Stand', npcStand);
+        this.textures.addBase64('Npc01Walk', npcWalk);
         this.load.on('complete', function () {
             this.anims.create({
                 key: 'stand_anim',
