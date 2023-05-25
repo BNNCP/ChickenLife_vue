@@ -454,52 +454,55 @@ class gameStart extends Phaser.Scene {
         this.load.audio('musicBridge', water);
         this.load.audio('musicIsland', lollipop);
         this.load.audio('musicLilRoom', mirror);
-        // this.load.spritesheet('stand', spriteStand, {
-        //     frameWidth: 128, frameHeight: 128
-        // });
-        this.textures.once('addtexture', () => {
-            this.load.spritesheet('stand', spriteStand, {
-                frameWidth: 128, frameHeight: 128
-            });
 
-        },
-            this)
-        this.textures.once('addtexture2', () => {
+        // this.textures.once('addtexture', () => {
+        //     this.load.spritesheet('stand', spriteStand, {
+        //         frameWidth: 128, frameHeight: 128
+        //     });
 
-            this.load.spritesheet('walk', spriteWalk, {
-                frameWidth: 128, frameHeight: 128
-            });
+        // },
+        //     this)
+        // this.textures.once('addtexture2', () => {
 
-        },
-            this)
-        this.textures.once('addtexture3', () => {
+        //     this.load.spritesheet('walk', spriteWalk, {
+        //         frameWidth: 128, frameHeight: 128
+        //     });
 
-            this.load.spritesheet('Npc01Stand', npcStand, {
-                frameWidth: 128, frameHeight: 128
-            });
+        // },
+        //     this)
+        // this.textures.once('addtexture3', () => {
 
-        },
-            this)
-        this.textures.once('addtexture4', () => {
+        //     this.load.spritesheet('Npc01Stand', npcStand, {
+        //         frameWidth: 128, frameHeight: 128
+        //     });
 
-            this.load.spritesheet('Npc01Walk', npcWalk, {
-                frameWidth: 128, frameHeight: 128
-            });
-        },
-            this)
-        // this.load.spritesheet('walk', spriteWalk, {
-        //     frameWidth: 128, frameHeight: 128
-        // });
-        // this.load.spritesheet('Npc01Stand', npcStand, {
-        //     frameWidth: 128, frameHeight: 128
-        // });
-        // this.load.spritesheet('Npc01Walk', npcWalk, {
-        //     frameWidth: 128, frameHeight: 128
-        // });
-        this.textures.addBase64('stand', spriteStand);
-        this.textures.addBase64('walk', spriteWalk);
-        this.textures.addBase64('Npc01Stand', npcStand);
-        this.textures.addBase64('Npc01Walk', npcWalk);
+        // },
+        //     this)
+        // this.textures.once('addtexture4', () => {
+
+        //     this.load.spritesheet('Npc01Walk', npcWalk, {
+        //         frameWidth: 128, frameHeight: 128
+        //     });
+        // },
+        //     this)
+        this.load.spritesheet('stand', '../img/phaser/Sprite_stand.png', {
+            frameWidth: 128, frameHeight: 128
+        });
+        this.load.spritesheet('walk', spriteWalk, {
+            frameWidth: 128, frameHeight: 128
+        });
+        this.load.spritesheet('Npc01Stand', npcStand, {
+            frameWidth: 128, frameHeight: 128
+        });
+        this.load.spritesheet('Npc01Walk', npcWalk, {
+            frameWidth: 128, frameHeight: 128
+        });
+        this.add.image(0, 0, 'stand', 0)
+        // this.textures.addBase64('stand', spriteStand);
+        // this.textures.addBase64('walk', spriteWalk);
+        // this.textures.addBase64('Npc01Stand', npcStand);
+        // this.textures.addBase64('Npc01Walk', npcWalk);
+        console.log(spriteStand)
         this.load.on('complete', function () {
             this.anims.create({
                 key: 'stand_anim',
