@@ -454,9 +454,15 @@ class gameStart extends Phaser.Scene {
         this.load.audio('musicBridge', water);
         this.load.audio('musicIsland', lollipop);
         this.load.audio('musicLilRoom', mirror);
-        this.load.spritesheet('stand', spriteStand, {
-            frameWidth: 128, frameHeight: 128
-        });
+        // this.load.spritesheet('stand', spriteStand, {
+        //     frameWidth: 128, frameHeight: 128
+        // });
+        this.textures.once('addtexture', () => {
+            this.load.spritesheet('stand', spriteStand, {
+                frameWidth: 128, frameHeight: 128
+            });
+        },
+            this)
         this.load.spritesheet('walk', spriteWalk, {
             frameWidth: 128, frameHeight: 128
         });
