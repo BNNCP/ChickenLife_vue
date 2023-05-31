@@ -205,6 +205,7 @@ export const phas = () => {
     let ice = {
         "iceServers": [
             { "url": "stun:stun.l.google.com:19302" },
+            { "url": 'stun:global.stun.twilio.com:3478?transport=udp' }
         ]
     };
     let constraints = {
