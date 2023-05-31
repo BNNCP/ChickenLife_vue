@@ -1,6 +1,6 @@
 <script setup>
 import { reactive, ref } from "vue";
-import { postAxiosObj, putAxiosString ,postAxiosString} from "../main.js";
+import { postAxiosObj, putAxiosString, postAxiosString } from "../main.js";
 import { playerRefs, currentBody } from "../main.js";
 import Phaser from "./Phaser.vue";
 import { inject } from "vue";
@@ -121,12 +121,7 @@ export default {
           <button type="submit" class="btn" @click="CheckAccount">Login</button>
           <div class="login-register">
             <p>
-              還沒有帳號?<a
-                @click="changeView(2)"
-                href="#"
-                class="register-link"
-                >註冊</a
-              >
+              還沒有帳號?<a @click="changeView(2)" href="#" class="register-link">註冊</a>
             </p>
           </div>
         </form>
@@ -152,28 +147,12 @@ export default {
           </div>
           <div class="input-box">
             <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
-            <input
-              type="password"
-              v-model="register.confirmPassword"
-              required
-            />
+            <input type="password" v-model="register.confirmPassword" required />
             <label for=""> confirmPassword</label>
           </div>
           <div class="gender-details">
-            <input
-              type="radio"
-              name="gender"
-              id="dot-1"
-              :value="0"
-              v-model="register.gender"
-            />
-            <input
-              type="radio"
-              name="gender"
-              id="dot-2"
-              :value="1"
-              v-model="register.gender"
-            />
+            <input type="radio" name="gender" id="dot-1" :value="0" v-model="register.gender" />
+            <input type="radio" name="gender" id="dot-2" :value="1" v-model="register.gender" />
             <span class="gender-title">性別</span>
             <div class="category">
               <label for="dot-1">
@@ -194,9 +173,7 @@ export default {
           </button>
           <div class="login-register">
             <p>
-              已經有帳號了?<a @click="changeView(1)" href="#" class="login-link"
-                >登入</a
-              >
+              已經有帳號了?<a @click="changeView(1)" href="#" class="login-link">登入</a>
             </p>
           </div>
         </form>
@@ -216,7 +193,7 @@ export default {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: url("src/background3.jpg") no-repeat;
+  background: url("../background3.jpg") no-repeat;
   background-size: cover;
   background-position: center;
   width: 100%;
@@ -338,9 +315,9 @@ header {
   transition: all 0.3s ease;
 }
 
-#dot-1:checked ~ .category label .one,
-#dot-2:checked ~ .category label .two,
-#dot-3:checked ~ .category label .three {
+#dot-1:checked~.category label .one,
+#dot-2:checked~.category label .two,
+#dot-3:checked~.category label .three {
   background: #9b59b6;
   border-color: #d9d9d9;
 }
@@ -348,6 +325,7 @@ header {
 .form-box input[type="radio"] {
   display: none;
 }
+
 /* .wrapper .form-box.register {
   /* position: absolute;
   transform: translateX(400px); }*/
@@ -395,8 +373,8 @@ header {
   transition: 0.5s;
 }
 
-.input-box input:focus ~ label,
-.input-box input:valid ~ label {
+.input-box input:focus~label,
+.input-box input:valid~label {
   top: -5px;
 }
 
@@ -495,6 +473,7 @@ header {
   display: flex;
   flex-direction: column;
 }
+
 .modal button {
   padding: 10px 20px;
   font-size: 20px;
@@ -505,6 +484,7 @@ header {
   cursor: pointer;
   margin-top: 15px;
 }
+
 .modal .close {
   background-color: rgb(181, 45, 45);
   margin-top: 7px;
