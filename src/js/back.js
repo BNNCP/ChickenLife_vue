@@ -255,6 +255,7 @@ export const phas = () => {
             }
             vWebSocket.send(JSON.stringify(data));
             remoteVideo.srcObject = null;
+            peerChanel.removeTrack();
         }
 
     }
