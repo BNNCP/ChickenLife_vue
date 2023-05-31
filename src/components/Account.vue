@@ -216,7 +216,7 @@ export default {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: url("src/background3.jpg") no-repeat;
+  background: url("../background3.jpg") no-repeat;
   background-size: cover;
   background-position: center;
   width: 100%;
