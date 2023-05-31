@@ -57,7 +57,8 @@ onMounted(() => {
     // SpriteForP();
 });
 watch(() => {
-    playerRefs.value.coins
+    // playerRefs.value.coins;
+    playerRefs.value.user.a_Coin;
 });
 const OpenorClose = () => {
     if (props.modelValue === true) {
@@ -74,7 +75,7 @@ const imageUrl = (url) => {
 const product = ref([]);
 // 購買商品
 const openDialog = async (ID) => {
-    console.log(ID);
+    // console.log(ID);
     try {
 
         // getAxios(`/api/Cards/${cd.target.id}`, selectedCardProduct)
@@ -120,9 +121,10 @@ const confirmPurchase = (ID, Price, Name) => {
     // console.log("Name.substring(5, 8)=>", Name.substring(5, 8));
     const parts = parseInt(Name.substring(5, 8));
     // console.log("parts=>", parts);
-    playerRefs.value.coins += parts;
+    // playerRefs.value.coins += parts;
+    playerRefs.value.user.a_Coin += parts;
 
-    ChangeAccountCoins(playerRefs.value.coins);
+    ChangeAccountCoins(playerRefs.value.user.a_Coin);
 
     // 購買完成後關閉彈出視窗
     closeDialog();
@@ -133,9 +135,9 @@ const confirmPurchase = (ID, Price, Name) => {
 const ChangeAccountCoins = (coins) => {
     var test = {};
     var request = {};
-    request.A_ID = playerRefs.value.id;
+    request.A_ID = playerRefs.value.user.a_ID;
     request.A_Coin = coins;
-    postAxiosObjNodata(`/api/User/Update/${playerRefs.value.id}`, request, test);
+    postAxiosObjNodata(`/api/User/Update/${playerRefs.value.user.a_ID}`, request, test);
 }
 
 
@@ -147,7 +149,7 @@ const CardAdd = (ID, Price) => {
     var test = {};
     var request = {};
     request.CO_ID = 0;
-    request.A_ID = playerRefs.value.id;
+    request.A_ID = playerRefs.value.user.a_ID;
     request.CA_ID = ID;
     request.CA_Name = "";
     request.CT_ID = 1;
@@ -159,7 +161,7 @@ const CardAdd = (ID, Price) => {
 
     // console.log(request);
     axios.post(`${baseAddress}/api/CardOrders`, request).then(response => {
-        console.log("success");
+        // console.log("success");
         getCardOrderDTOes();
         // console.log("response.data", response.data);
     });
@@ -168,7 +170,7 @@ const CardOrderDTOes = ref([]);
 const getCardOrderDTOes = () => {
     CardOrderDTOes.value = [];
     var request = {};
-    request.A_ID = playerRefs.value.id;
+    request.A_ID = playerRefs.value.user.a_ID;
     request.CA_Name = "";
     axios.post(`${baseAddress}/api/CardOrders/Show`, request).then(response => {
         // alert(JSON.stringify(response.data));
@@ -185,7 +187,7 @@ const PayMentForLinePay = async () => {
 const PayMentForNewWebPay = async () => {
     var request = {};
     request.MerchantID = 0;
-    request.MerchantOrderNo = playerRefs.value.id;
+    request.MerchantOrderNo = playerRefs.value.user.a_ID;
     request.ItemDesc = ID;
     request.Amt = "";
     request.ExpireDate = 1;
@@ -222,7 +224,7 @@ const PayMentForNewWebPay = async () => {
             title: `${error.response.status} ${error.response.statusText}\n${error.response.data}`
         })
     }
-}
+};
 
 
 
@@ -264,9 +266,9 @@ const PayMentForNewWebPay = async () => {
                                 </p>
                             </div>
                             <div class="d-flex align-items-center mt-3 fs-6">
-                                <!-- <button :id="item.cA_ID" type="button" class="btn btn-primary"
+                                <!-- <button :id="item.cA_ID" type="button" class="custom-btn btn-1"
                                     @click="showBuyDetail(item.cA_ID)">購買</button> -->
-                                    <button :id="item.cA_ID" type="button" class="btn btn-primary"
+                                    <button :id="item.cA_ID" type="button" class="custom-btn btn-1"
                                     @click="openDialog(item.cA_ID)">詳細</button>
                             </div>
                         </div>
@@ -317,11 +319,11 @@ const PayMentForNewWebPay = async () => {
                         </ul>
                         <!-- Product Options START -->
                         <div id="product" class="product-options">
-                            <div class="form-group product-quantity">
-                                <button class="btn btn-primary m-1" @click="PayMentForNewWebPay">Visa</button>
+                            <div class="form-group">
+                                <!-- <button class="btn btn-primary m-1" @click="PayMentForNewWebPay">Visa</button> -->
                                 <!-- <button class="btn btn-primary m-1" @click="">LinePay</button> -->
-                                <button class="btn btn-primary m-1 btn-lg btn-block" @click="confirmPurchase(selectedCardProduct.cA_ID,selectedCardProduct.cA_Price,selectedCardProduct.cA_Name)">購買</button>
-                                <button class="btn btn-secondary" @click="closeDialog">關閉</button> 
+                                <button class="custom-btn2 btn-1" @click="confirmPurchase(selectedCardProduct.cA_ID,selectedCardProduct.cA_Price,selectedCardProduct.cA_Name)">購買</button>
+                                <button class="custom-btn2 btn-1" @click="closeDialog">關閉</button> 
                             </div>
                         </div>
                         <!-- Product Options END -->
@@ -345,14 +347,9 @@ const PayMentForNewWebPay = async () => {
 
     </div>
 
-    <!-- 點數不足提示框 -->
-    <!-- <div v-if="showInsufficientPoints" class="dialog">
-      <p>點數不足，無法購買該商品。</p>
-      <button class="btn btn-info" @click="closeInsufficientPointsDialog">關閉</button>
-    </div> -->
 
 <!-- 遮罩層 -->
-<div v-if="isDialogOpen || showInsufficientPoints" class="dialog-overlay"></div>
+    <div v-if="isDialogOpen || showInsufficientPoints" class="dialog-overlay"></div>
 
 </template>
 
@@ -381,20 +378,56 @@ const PayMentForNewWebPay = async () => {
     /* 設定疊加順序，需高於其他元素 */
 }
 
-/* .sprite {
-    width: 357.143px;
-    height: 400px;
-
+.custom-btn {
+  width: 100%;
+  height: 40px;
+  /* color: #fff; */
+  color: #000;
+  border-radius: 5px;
+  padding: 10px 25px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 500;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+   box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+   7px 7px 20px 0px rgba(0,0,0,.1),
+   4px 4px 5px 0px rgba(0,0,0,.1);
+  outline: none;
+}
+.custom-btn2{
+    width: 50%;
+  height: 40px;
+  /* color: #fff; */
+  color: #000;
+  border-radius: 5px;
+  padding: 10px 25px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 500;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+   box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+   7px 7px 20px 0px rgba(0,0,0,.1),
+   4px 4px 5px 0px rgba(0,0,0,.1);
+  outline: none;
 }
 
-.scale {
-    transform: scale(0.6);
-    transform-origin: top left;
-}
 
-.productHeight {
-    height: 50%;
-} */
+/* 1 */
+.btn-1 {
+  background: rgb(6,14,131);
+  background: linear-gradient(0deg, rgba(6,14,131,1) 0%, rgba(12,25,180,1) 100%);
+  border: none;
+}
+.btn-1:hover {
+   background: rgb(0,3,255);
+background: linear-gradient(0deg, rgba(0,3,255,1) 0%, rgba(2,126,251,1) 100%);
+}
 
 .bd-blue-200 {
     color: #000;
