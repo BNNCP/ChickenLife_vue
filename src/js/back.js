@@ -227,6 +227,7 @@ export const phas = () => {
     let stream;
     let MicOn = true;
     let CamOn = true;
+    let rtcSender;
 
     function muteMic() {
         stream.getAudioTracks()[0].enabled = !(stream.getAudioTracks()[0].enabled);
@@ -255,7 +256,7 @@ export const phas = () => {
             }
             vWebSocket.send(JSON.stringify(data));
             remoteVideo.srcObject = null;
-            peerChanel.removeTrack();
+            peerChanel.removeTrack(rtcSender);
         }
 
     }
@@ -264,7 +265,7 @@ export const phas = () => {
         try {
             stream = await navigator.mediaDevices.getUserMedia(constraints);
             for (const track of stream.getTracks()) {
-                peerChanel.addTrack(track, stream);
+                rtcSender = peerChanel.addTrack(track, stream);
             }
             myVideo.srcObject = stream;
         } catch (err) {
