@@ -206,9 +206,9 @@ export const phas = () => {
         "iceServers": [
             { "url": "stun:stun.l.google.com:19302" },
             {
-                urls: 'turn:openrelay.metered.ca:80',
-                username: 'openrelayproject',
-                credentials: 'openrelayproject'
+                "url": 'turn:openrelay.metered.ca:80',
+                "username": 'openrelayproject',
+                "credentials": 'openrelayproject'
             }
         ]
     };
